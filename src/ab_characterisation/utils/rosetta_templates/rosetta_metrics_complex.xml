@@ -1,0 +1,38 @@
+<ROSETTASCRIPTS>
+<SCOREFXNS>
+<ScoreFunction name="beta" weights="beta">
+</ScoreFunction>
+<ScoreFunction name="beta_cst" weights="beta">
+<Reweight scoretype="coordinate_constraint" weight="1"/>
+</ScoreFunction>
+</SCOREFXNS>
+<RESIDUE_SELECTORS>
+<Chain name="HL" chains="H,L"/>
+</RESIDUE_SELECTORS>
+<SIMPLE_METRICS>
+<RMSDMetric name="rmsd" rmsd_type="rmsd_sc_heavy" residue_selector="HL" use_native="1"/>
+<DihedralDistanceMetric name="dihedral" residue_selector="HL" use_native="1"/>
+<SapScoreMetric name="SAP" score_selector="HL" />
+</SIMPLE_METRICS>
+<FILTERS>
+</FILTERS>
+<TASKOPERATIONS>
+<InitializeFromCommandline name="ifcl"/>
+<RestrictToRepacking name="rtr"/>
+</TASKOPERATIONS>
+<MOVERS>
+<AtomCoordinateCstMover name="coor_cst"/>
+<MinMover name="min" scorefxn="beta_cst" chi="1" bb="1" jump="1" tolerance="0.001"/>
+<FastRelax name="relax" scorefxn="beta_cst" cartesian="0" repeats="1" task_operations="ifcl,rtr"/>
+<InterfaceAnalyzerMover name="interface_analyzer" scorefxn="beta" packstat="0" pack_input="0" pack_separated="1" fixedchains="H,L" tracer="0" interface_sc="1"/>
+<RunSimpleMetrics name="metrics" metrics="rmsd,dihedral,SAP" prefix="metric_" />
+</MOVERS>
+<PROTOCOLS>
+<Add mover_name="coor_cst"/>
+<Add mover_name="min"/>
+<Add mover_name="relax"/>
+<Add mover="interface_analyzer"/>
+<Add mover="metrics"/>
+</PROTOCOLS>
+<OUTPUT scorefxn="beta"/>
+</ROSETTASCRIPTS>

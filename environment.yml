@@ -1,0 +1,19 @@
+channels:
+  - conda-forge
+  - bioconda
+  - pytorch
+dependencies:
+  - python=3.10
+  - pip
+  - typer
+  - pandas
+  - loguru
+  - biopython
+  - openmm
+  - pdbfixer
+  - pytorch=2.1.0
+  - mpi4py
+  - pytest
+  - pip:
+      - Immunebuilder
+      - -e .

@@ -1,0 +1,28 @@
+<ROSETTASCRIPTS>
+<SCOREFXNS>
+<ScoreFunction name="beta" weights="beta"/>
+</SCOREFXNS>
+<RESIDUE_SELECTORS>
+<Chain name="HL" chains="H,L"/>
+</RESIDUE_SELECTORS>
+<SIMPLE_METRICS>
+<RMSDMetric name="rmsd" rmsd_type="rmsd_sc_heavy" residue_selector="HL" use_native="1"/>
+<DihedralDistanceMetric name="dihedral" residue_selector="HL" use_native="1"/>
+<SapScoreMetric name="SAP" score_selector="HL" />
+</SIMPLE_METRICS>
+<FILTERS>
+</FILTERS>
+<TASKOPERATIONS>
+<InitializeFromCommandline name="ifcl"/>
+<RestrictToRepacking name="rtr"/>
+</TASKOPERATIONS>
+<MOVERS>
+<InterfaceAnalyzerMover name="interface_analyzer" scorefxn="beta" packstat="0" pack_input="0" pack_separated="1" interface="H_L" tracer="0" interface_sc="1"/>
+<RunSimpleMetrics name="metrics" metrics="rmsd,dihedral,SAP" prefix="metric_" />
+</MOVERS>
+<PROTOCOLS>
+<Add mover="interface_analyzer"/>
+<Add mover="metrics"/>
+</PROTOCOLS>
+<OUTPUT scorefxn="beta"/>
+</ROSETTASCRIPTS>
