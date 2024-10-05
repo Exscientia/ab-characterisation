@@ -111,7 +111,8 @@ The antibody characterisation pipeline was developed  by researchers and enginee
 ## Citation
 If you use this code in your research, please cite the following paper:
 
-@article {Computational_design_of_developable_therapeutic_antibodies,
+```
+@article{Computational_design_of_developable_therapeutic_antibodies,
 	author = {Dreyer, Fr{\'e}d{\'e}ric A. and Schneider, Constantin and Kovaltsuk, Aleksandr and Cutting, Daniel and Byrne, Matthew J. and Nissley, Daniel A. and Wahome, Newton and Kenlay, Henry and Marks, Claire and Errington, David and Gildea, Richard J. and Damerell, David and Tizei, Pedro and Bunjobpol, Wilawan and Darby, John F. and Drulyte, Ieva and Hurdiss, Daniel L. and Surade, Sachin and Pires, Douglas E. V. and Deane, Charlotte M.},
 	title = {Computational design of developable therapeutic antibodies: efficient traversal of binder landscapes and rescue of escape mutations},
 	year = {2024},
@@ -119,3 +120,4 @@ If you use this code in your research, please cite the following paper:
 	eprint = {https://www.biorxiv.org/content/early/2024/10/04/2024.10.03.616038.full.pdf},
 	journal = {bioRxiv}
 }
+```
